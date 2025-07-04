@@ -14,10 +14,10 @@ load_dotenv()
 
 # Logging
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(_name_)
+logger = logging.getLogger(__name__)  # FIXED: _name_ ➝ __name__
 
 # Flask App
-app = Flask(_name_)
+app = Flask(__name__)  # FIXED: _name_ ➝ __name__
 app.secret_key = os.environ.get('SECRET_KEY', os.urandom(24))
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(hours=1)
 
