@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Patient Appointment Details{% endblock %}
+
+{% block content %}
+<style>
+  body {
+    background: #f0f4f8;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.95);
+    margin-top: 4rem;
+    padding: 2.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+    max-width: 500px;
+    width: 90%;
+    animation: fadeSlideIn 0.7s ease;
+  }
+
+  @keyframes fadeSlideIn {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h2 {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  li {
+    background: #f8f9fa;
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.7rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s;
+  }
+
+  li:hover {
+    transform: translateX(5px);
+    background: #eef7ff;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .btn {
+    flex: 1;
+    text-align: center;
+    padding: 0.75rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    background: #0056b3;
+  }
+
+  .btn.outline {
+    background: white;
+    color: #007bff;
+    border: 2px solid #007bff;
+  }
+
+  .btn.outline:hover {
+    background: #007bff;
+    color: white;
+  }
+
+  @media (max-width: 500px) {
+    h2 {
+      font-size: 1.4rem;
+    }
+
+    .btn-group {
+      flex-direction: column;
+    }
+  }
+</style>
+
+<div class="container">
+  {% if appointment %}
+    <h2>Patient View - Appointment #{{ appointment['id'] }}</h2>
+    <ul>
+      <li><strong>Doctor:</strong> {{ appointment['doctor'] }}</li>
+      <li><strong>Date:</strong> {{ appointment['date'] }}</li>
+      <li><strong>Time:</strong> {{ appointment['time'] }}</li>
+    </ul>
+  {% else %}
+    <p>Appointment not found.</p>
+  {% endif %}
+
+  <div class="btn-group">
+    <a class="btn" href="{{ url_for('patient_dashboard') }}">Back to Dashboard</a>
+    <a class="btn outline" href="{{ url_for('logout') }}">Logout</a>
+  </div>
+</div>
+{% endblock %}

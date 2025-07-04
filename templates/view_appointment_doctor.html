@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% block title %}Doctor Appointment Details{% endblock %}
+
+{% block content %}
+<style>
+  :root {
+    --primary: #007bff;
+    --primary-dark: #0056b3;
+    --text-dark: #222;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --radius: 14px;
+  }
+
+  body {
+    background: linear-gradient(to right top, #e3f2fd, #f1f8ff);
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    animation: fadeInSlide 0.8s ease-out;
+  }
+
+  @keyframes fadeInSlide {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  h2 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 1.8rem;
+    font-size: 2rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    font-size: 1.1rem;
+  }
+
+  li {
+    margin: 0.7rem 0;
+    padding: 0.6rem 1rem;
+    background: #f9f9f9;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+
+  li:hover {
+    background: #eef7ff;
+  }
+
+  .btn-group {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+  }
+
+  .btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn.outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+
+  .btn.outline:hover {
+    background: var(--primary);
+    color: #fff;
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    padding: 1rem 0;
+  }
+
+  @media (max-width: 600px) {
+    .container {
+      padding: 1.2rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    li {
+      font-size: 1rem;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.95rem;
+    }
+  }
+</style>
+
+<div class="container">
+  {% if appointment %}
+    <h2>Doctor View - Appointment #{{ appointment['id'] }}</h2>
+    <ul>
+      <li><strong>Patient:</strong> {{ appointment['patient'] }}</li>
+      <li><strong>Date:</strong> {{ appointment['date'] }}</li>
+      <li><strong>Time:</strong> {{ appointment['time'] }}</li>
+    </ul>
+  {% else %}
+    <p>❌ Appointment not found.</p>
+  {% endif %}
+
+  <div class="btn-group">
+    <a class="btn" href="{{ url_for('doctor_dashboard') }}">🔙 Back to Dashboard</a>
+    <a class="btn outline" href="{{ url_for('logout') }}">🚪 Logout</a>
+  </div>
+</div>
+{% endblock %}
