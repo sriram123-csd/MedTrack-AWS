@@ -171,5 +171,5 @@ def book_appointment():
 
     return render_template('book_appointment.html')
 
-if _name_ == '_main_':
+if _name_ == '__main__':
     app.run(debug=True)
