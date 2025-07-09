@@ -40,8 +40,7 @@ python app.py
 
 ## 📧 Contact
 For inquiries or collaboration opportunities, reach out via:
-- Email: [ravikira901@gmail.com](mailto:ravikira901@gmail.com)
-- LinkedIn: [Ravi Kiran Gandupalli](https://www.linkedin.com/in/ravi-kiran-gandupalli-56482b291?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)
-
+- Email: [shivayan4@gmail.com](mailto:shivayan4@gmail.com)
+- LinkedIn: [Sriramsai Tamire](https://www.linkedin.com/in/sriramsai-tamire-a9749b277?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 ---
 ⭐ Don't forget to **star** this repository if you found it helpful!
